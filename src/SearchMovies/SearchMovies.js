@@ -5,7 +5,21 @@ const SearchMovies = () => {
 
   const searchMovies = async (e) => {
     e.preventDefault();
-    console.log("submitting");
+
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const query = 'Jurassic Park'
+    const url = `http://www.omdbapi.com/?t=${query}&apikey=${API_KEY}`;
+
+    try {
+      const res = await fetch(url);
+      const data  = await res.json();
+      console.log(data);
+
+    } catch (err) {
+      console.error(err);
+
+    }
+
   }
 
   return (
