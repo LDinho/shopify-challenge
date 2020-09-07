@@ -43,6 +43,55 @@ p {
     background-color: rgba(41, 44, 52, 0.98);
 }
 
+.btn-disabled {
+    background-color: rgb(77, 79, 86);
+    color: gray;
+    padding: 1rem 2rem;
+    border: 1px solid rgb(77, 79, 86);
+    border-radius: 20px;
+    font-size: 1.4rem;
+    height: 4rem;
+}
+
+.movie-title {
+    display: flex;
+    padding: 1.2rem;
+}
+
+.button-nominate {
+    height: 4rem;
+
+}
+
+.wrapper-movies-nominations {
+    display: flex;
+}
+
+.movie-results-title {
+    border-bottom: 1px solid rgba(22, 31, 39, 0.26);
+    margin-bottom: 3rem;
+}
+
+.list-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.movie-list {
+    border: 1px solid rgba(22, 31, 39, 0.26);
+    box-shadow: -2px 3px 15px black;
+    margin-top: 4rem;
+    width: 50%;
+}
+
+.nomination-list {
+    border: 1px solid rgba(22, 31, 39, 0.26);
+    box-shadow: 2px 3px 15px black;
+    margin-left: 1rem;
+    margin-top: 4rem;
+    width: 50%;
+}
+
 @media (min-width:786px){
     .form {
         grid-template-columns: auto 1fr auto;
