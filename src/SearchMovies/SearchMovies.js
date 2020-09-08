@@ -47,7 +47,7 @@ const SearchMovies = () => {
     e.preventDefault();
 
     const API_KEY = process.env.REACT_APP_API_KEY;
-    const url = `http://www.omdbapi.com/?s=${query}&type=movie&apikey=${API_KEY}`;
+    const url = `https://www.omdbapi.com/?s=${query}&type=movie&apikey=${API_KEY}`;
 
     try {
       const res = await fetch(url);
