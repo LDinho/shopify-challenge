@@ -27,7 +27,6 @@ const SearchMovies = () => {
 
   const handleNomination = (movie) => {
     setNominations([movie, ...nominations])
-    console.log("nominations array", nominations);
   }
 
   const handleRemove = (movie) => {
@@ -55,7 +54,6 @@ const SearchMovies = () => {
       const data  = await res.json();
       // property Search from movie results returned from omdb
       const movieResults = data.Search;
-      console.log(movieResults)
 
       setMovies(movieResults);
       setQuery('');
