@@ -12,10 +12,10 @@ const SearchMovies = () => {
   const [nominations, setNominations] = useState([]);
 
   const isButtonDisabled = (movie) => {
-    // console.log("MOVIE", movie);
     if (nominations){
-      const movieSelected = nominations.find((movieObj) => movieObj.Title === movie.Title && movieObj.Year === movie.Year);
-      console.log("movieSelected:", movieSelected);
+      const movieSelected = nominations.find((movieObj) => {
+        return movieObj.Title === movie.Title && movieObj.Year === movie.Year;
+      });
       if (movieSelected) {
         return true;
       }
@@ -28,8 +28,10 @@ const SearchMovies = () => {
   }
 
   const handleRemove = (movie) => {
-    const updatedNominationList = nominations.filter(movieObj => movieObj.Title !== movie);
-    setNominations([...updatedNominationList])
+    const updatedNominationList = nominations.filter(movieObj => {
+      return movieObj.imdbID !== movie.imdbID;
+    });
+    setNominations([...updatedNominationList]);
   }
 
   const onInputChange = e => {
