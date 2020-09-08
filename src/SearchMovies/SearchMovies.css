@@ -72,6 +72,10 @@ p {
     margin-bottom: 3rem;
 }
 
+.movie-results-title-warning {
+    border-bottom: none;
+}
+
 .list-title {
     font-size: 2rem;
     font-weight: 600;
@@ -90,6 +94,13 @@ p {
     margin-left: 1rem;
     margin-top: 4rem;
     width: 50%;
+}
+
+.warning {
+    border: 1px solid gray;
+    padding: 1rem;
+    /*border-radius: 10px;*/
+    background-color: rgba(255, 0, 0, 0.38);
 }
 
 @media (min-width:786px){

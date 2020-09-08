@@ -19,6 +19,9 @@ const SearchMovies = () => {
       if (movieSelected) {
         return true;
       }
+      if (nominations.length === 5){
+        return true;
+      }
     }
   }
 
@@ -78,14 +81,14 @@ const SearchMovies = () => {
         </form>
         <div className="wrapper-movies-nominations">
           <div className="movie-list">
-            {
-              !movies && <p>No movies with that title exists in our database</p>
-            }
 
-            <div className="movie-results-title">
+            <div className={!movies ? "movie-results-title-warning":"movie-results-title" }>
               <h2 className="list-title">
                 Movie results {movieQueried && (<>for "{movieQueried}" </>)}
               </h2>
+              {
+                !movies && <p className="warning">This movie title does not exist in our database</p>
+              }
             </div>
 
             {movies && movies.length > 0 && movies.map((movie) => (
@@ -98,10 +101,13 @@ const SearchMovies = () => {
             ))}
           </div>
           <div className="nomination-list">
-            <div className="movie-results-title">
+            <div className={nominations.length === 5 ? "movie-results-title-warning":"movie-results-title" }>
               <h2 className="list-title">
                 Nominations
               </h2>
+              { nominations.length === 5 &&
+                (<p className="warning">You have reached your nomination limit</p>)
+              }
             </div>
             {nominations && nominations.length > 0 && nominations.map((movie) => (
               <NominationItem movie={movie}
