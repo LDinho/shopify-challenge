@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './SearchMovies.css';
-import MovieList from '../MovieList/MovieList'
+import MovieItem from '../MovieList/MovieItem'
+import NominationItem from '../NominationList/NominationItem'
 
 const SearchMovies = () => {
   //tracking state - input query, movies
@@ -10,18 +11,29 @@ const SearchMovies = () => {
   const [movies, setMovies] = useState([]);
   const [nominations, setNominations] = useState([]);
 
-  const handleNomination = (movieTitle) => {
-    setNominations([movieTitle, ...nominations])
+  const isButtonDisabled = (movie) => {
+    // console.log("MOVIE", movie);
+    if (nominations){
+      const movieSelected = nominations.find((movieObj) => movieObj.Title === movie.Title && movieObj.Year === movie.Year);
+      console.log("movieSelected:", movieSelected);
+      if (movieSelected) {
+        return true;
+      }
+    }
+  }
+
+  const handleNomination = (movie) => {
+    setNominations([movie, ...nominations])
     console.log("nominations array", nominations);
   }
 
-  const handleRemove = (movieTitle) => {
-    console.log("clicked to remove", movieTitle);
+  const handleRemove = (movie) => {
+    const updatedNominationList = nominations.filter(movieObj => movieObj.Title !== movie);
+    setNominations([...updatedNominationList])
   }
 
   const onInputChange = e => {
     const { value } = e.target;
-    console.log('value', value)
     setQuery(value);
     setmovieQueried(value);
   };
@@ -75,7 +87,12 @@ const SearchMovies = () => {
             </div>
 
             {movies && movies.length > 0 && movies.map((movie) => (
-              <MovieList movie={movie} handleNomination={handleNomination} key={movie.imdbID}/>
+              <MovieItem movie={movie}
+                         handleNomination={handleNomination}
+                         nominations={nominations}
+                         isButtonDisabled={isButtonDisabled}
+                         key={movie.imdbID}
+              />
             ))}
           </div>
           <div className="nomination-list">
@@ -85,14 +102,10 @@ const SearchMovies = () => {
               </h2>
             </div>
             {nominations && nominations.length > 0 && nominations.map((movie) => (
-              <div className="movie-title" key={movie.imdbID}>
-                <p>{movie.Title} <small className="year">({movie.Year})</small> </p>
-                <button className="button button-nominate"
-                        onClick={() => {
-                          handleRemove(movie.Title);
-                        }}>Remove
-                </button>
-              </div>
+              <NominationItem movie={movie}
+                              handleRemove={handleRemove}
+                              key={movie.imdbID}
+              />
             ))}
           </div>
         </div>
