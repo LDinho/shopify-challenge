@@ -24,6 +24,7 @@ body {
   pointer-events: none;
   background-color: rgb(98,218,251);
   border-radius: 100%;
+  margin-top: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

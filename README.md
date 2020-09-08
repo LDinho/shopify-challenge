@@ -1,7 +1,8 @@
-This project is hosted [TBD](https://).
-
 ## Shoppies Web App
 
+#### This project is [hosted live here](https://shoppienoms.netlify.app/).
+
+<br>
 In the project directory, you can run:
 
 ### `yarn start`
