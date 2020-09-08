@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './champion.svg';
 import SearchMovies from './SearchMovies/SearchMovies';
 
 import './App.css';
